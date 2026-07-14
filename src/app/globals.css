@@ -1,26 +1,133 @@
 @import "tailwindcss";
 
+@theme {
+  --color-brand-bg: #0A0A0A;
+  --color-brand-surface: #151515;
+  --color-brand-amber: #FF8A00;
+  --color-brand-green: #3DDC97;
+  --color-brand-text: #F2F2F2;
+  --color-brand-muted: #8A8A8A;
+
+  --font-bebas: var(--font-bebas-neue);
+  --font-syne: var(--font-syne);
+  --font-inter: var(--font-inter);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0A0A0A;
+  --foreground: #F2F2F2;
+  --grid-color: rgba(255, 138, 0, 0.04);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), sans-serif;
+  overflow-x: hidden;
+}
+
+/* Blueprint graph paper grid background */
+.blueprint-bg {
+  background-image: 
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: center;
+}
+
+/* Subtly brighter major grid lines every 5 squares */
+.blueprint-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(255, 138, 0, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 138, 0, 0.08) 1px, transparent 1px);
+  background-size: 160px 160px;
+  background-position: center;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Corner bracket transitions */
+.bracket-corner {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-color: #FF8A00;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+  pointer-events: none;
+}
+
+.bracket-tl { top: 0; left: 0; border-top-width: 1px; border-left-width: 1px; }
+.bracket-tr { top: 0; right: 0; border-top-width: 1px; border-r-width: 1px; }
+.bracket-bl { bottom: 0; left: 0; border-b-width: 1px; border-left-width: 1px; }
+.bracket-br { bottom: 0; right: 0; border-b-width: 1px; border-r-width: 1px; }
+
+/* Animate brackets outward on hover */
+.group:hover .bracket-tl { transform: translate(-3px, -3px); }
+.group:hover .bracket-tr { transform: translate(3px, -3px); }
+.group:hover .bracket-bl { transform: translate(-3px, 3px); }
+.group:hover .bracket-br { transform: translate(3px, 3px); }
+
+/* Custom drawing animation on scroll or render for brackets */
+@keyframes drawBorder {
+  from {
+    width: 0;
+    height: 0;
+  }
+  to {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+.animate-brackets .bracket-corner {
+  animation: drawBorder 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Scanning scanner animation effect for images */
+@keyframes scanLine {
+  0% {
+    top: 0%;
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+.scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #FF8A00;
+  box-shadow: 0 0 10px #FF8A00, 0 0 20px #FF8A00;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Custom Hide Scrollbar for snap carousel */
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+/* Glow Mouse Cursor Glow Layer styling */
+.cursor-glow {
+  background: radial-gradient(400px circle at var(--x) var(--y), rgba(255, 138, 0, 0.08), transparent 80%);
 }
