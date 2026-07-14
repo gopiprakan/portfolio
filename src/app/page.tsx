@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { 
   ArrowUpRight, 
   ArrowRight,
@@ -86,22 +86,23 @@ const IssuerLogo = ({ logo }: { logo: string }) => {
 
 // Scroll Reveal Image component
 const ImageScrollReveal = ({ src, alt }: { src: string; alt: string }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, amount: 0.15 });
+
   return (
-    <div className="relative overflow-hidden w-full aspect-[16/10] bg-[#0e0e0e]">
+    <div ref={ref} className="relative overflow-hidden w-full aspect-[16/10] bg-[#0e0e0e]">
       {/* Scanner laser bar triggered on viewport */}
       <motion.div
         initial={{ top: "0%", opacity: 1 }}
-        whileInView={{ top: "100%", opacity: [1, 1, 0] }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 1.4, ease: "easeInOut" }}
+        animate={isInView ? { top: "100%", opacity: [1, 1, 0] } : { top: "0%", opacity: 1 }}
+        transition={{ duration: 1.2, ease: "easeInOut" }}
         className="absolute left-0 right-0 h-[2px] bg-brand-amber shadow-[0_0_12px_#FF8A00,0_0_20px_#FF8A00] z-20"
       />
       {/* Clip path wipe matching scanner line */}
       <motion.div
         initial={{ clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)" }}
-        whileInView={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 1.4, ease: "easeInOut" }}
+        animate={isInView ? { clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" } : { clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)" }}
+        transition={{ duration: 1.2, ease: "easeInOut" }}
         className="w-full h-full relative"
       >
         <Image
@@ -115,6 +116,7 @@ const ImageScrollReveal = ({ src, alt }: { src: string; alt: string }) => {
     </div>
   );
 };
+
 
 // Main Landing Page Component
 export default function Page() {
