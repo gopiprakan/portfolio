@@ -1,0 +1,92 @@
+{
+  "skills": [
+    "AI & Machine Learning",
+    "Deep Learning Pipelines",
+    "Full-Stack Web Apps",
+    "Data Engineering",
+    "Freelance Delivery",
+    "API Architecture",
+    "Distributed Systems",
+    "Next.js & React",
+    "Vector Databases",
+    "Cloud Architecture"
+  ],
+  "certifications": [
+    {
+      "id": "cert-aws-ml",
+      "title": "AWS Certified Machine Learning – Specialty",
+      "issuer": "Amazon Web Services (AWS)",
+      "date": "Nov 2025",
+      "credentialUrl": "https://aws.amazon.com/verification",
+      "verified": true,
+      "logo": "aws"
+    },
+    {
+      "id": "cert-gcp-data",
+      "title": "Professional Data Engineer",
+      "issuer": "Google Cloud Platform (GCP)",
+      "date": "Sep 2025",
+      "credentialUrl": "https://cloud.google.com/certification",
+      "verified": true,
+      "logo": "gcp"
+    },
+    {
+      "id": "cert-tf-dev",
+      "title": "TensorFlow Developer Certificate",
+      "issuer": "Google",
+      "date": "Jun 2025",
+      "credentialUrl": "https://tensorflow.org/certificate",
+      "verified": true,
+      "logo": "tensorflow"
+    },
+    {
+      "id": "cert-azure-ds",
+      "title": "Azure Data Scientist Associate",
+      "issuer": "Microsoft Azure",
+      "date": "Mar 2025",
+      "credentialUrl": "https://learn.microsoft.com/en-us/credentials",
+      "verified": true,
+      "logo": "azure"
+    }
+  ],
+  "projects": [
+    {
+      "id": "project-zaro",
+      "title": "ZARO Brand & Ship Engine",
+      "role": "Founder & Lead Architect",
+      "flagship": true,
+      "problem": "Freelance web products suffer from bloated stacks and template designs. ZARO is built as a custom engineering standard that ships sub-second load times and production-ready architectures.",
+      "tech": ["Next.js", "TypeScript", "Tailwind CSS", "Prisma", "PostgreSQL", "Framer Motion", "Docker"],
+      "liveUrl": "https://zaro.dev",
+      "caseStudyUrl": "#",
+      "imageKey": "zaro"
+    },
+    {
+      "id": "project-neuralstream",
+      "title": "NeuralStream IoT Pipeline",
+      "role": "Lead Data Science Engineer",
+      "flagship": false,
+      "problem": "Unstructured IoT sensor streams suffer from slow processing and late anomaly detection. NeuralStream processes, indexes, and predicts anomalies on live telemetry data in under 12 milliseconds.",
+      "tech": ["Python", "TensorFlow", "FastAPI", "Apache Kafka", "ClickHouse", "React", "Grafana"],
+      "liveUrl": "#",
+      "caseStudyUrl": "#",
+      "imageKey": "neuralstream"
+    },
+    {
+      "id": "project-deepsearch",
+      "title": "DeepSearch Vector API",
+      "role": "System Architect",
+      "flagship": false,
+      "problem": "Traditional database query layers fail to answer semantic user queries. DeepSearch is a highly concurrent Go-based API utilizing vector embeddings to search through tens of millions of documents.",
+      "tech": ["Go", "PyTorch", "Qdrant Vector DB", "gRPC", "Docker", "Kubernetes", "Prometheus"],
+      "liveUrl": "#",
+      "caseStudyUrl": "#",
+      "imageKey": "deepsearch"
+    }
+  ],
+  "resume": {
+    "lastUpdated": "July 2026",
+    "pdfPath": "/resume-gopiprakan.pdf",
+    "previewImagePath": "/resume-preview.png"
+  }
+}
