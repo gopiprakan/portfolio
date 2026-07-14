@@ -70,11 +70,29 @@ body {
 .bracket-bl { bottom: 0; left: 0; border-b-width: 1px; border-left-width: 1px; }
 .bracket-br { bottom: 0; right: 0; border-b-width: 1px; border-r-width: 1px; }
 
+/* Draw-on bracket animation */
+.draw-bracket .bracket-corner {
+  width: 0;
+  height: 0;
+  border-color: rgba(255, 138, 0, 0);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              height 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.2s ease, 
+              transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.draw-bracket:hover .bracket-corner {
+  width: 12px;
+  height: 12px;
+  border-color: rgba(255, 138, 0, 1);
+}
+
 /* Animate brackets outward on hover */
 .group:hover .bracket-tl { transform: translate(-3px, -3px); }
 .group:hover .bracket-tr { transform: translate(3px, -3px); }
 .group:hover .bracket-bl { transform: translate(-3px, 3px); }
 .group:hover .bracket-br { transform: translate(3px, 3px); }
+
 
 /* Custom drawing animation on scroll or render for brackets */
 @keyframes drawBorder {
@@ -131,3 +149,17 @@ body {
 .cursor-glow {
   background: radial-gradient(400px circle at var(--x) var(--y), rgba(255, 138, 0, 0.08), transparent 80%);
 }
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 35s linear infinite;
+}
+
