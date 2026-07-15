@@ -25,8 +25,9 @@ export default function BackgroundParticles() {
 
     let animationFrameId: number;
     let particles: Particle[] = [];
-    const maxParticles = 60;
-    const colors = ["#8b5cf6", "#06b6d4", "#a78bfa", "#22d3ee"];
+    const maxParticles = 50;
+    // Grayscale colors for black and white theme
+    const colors = ["#ffffff", "#e4e4e7", "#a1a1aa", "#71717a"];
 
     const handleResize = () => {
       canvas.width = window.innerWidth;
@@ -40,10 +41,10 @@ export default function BackgroundParticles() {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.4,
-          vy: (Math.random() - 0.5) * 0.4,
-          radius: Math.random() * 1.5 + 0.5,
-          alpha: Math.random() * 0.5 + 0.15,
+          vx: (Math.random() - 0.5) * 0.35,
+          vy: (Math.random() - 0.5) * 0.35,
+          radius: Math.random() * 1.2 + 0.4,
+          alpha: Math.random() * 0.4 + 0.1,
           color: colors[Math.floor(Math.random() * colors.length)],
         });
       }
@@ -68,12 +69,12 @@ export default function BackgroundParticles() {
           const dx = mouse.x - p.x;
           const dy = mouse.y - p.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          const limit = 100;
+          const limit = 90;
 
           if (dist < limit) {
             const force = (limit - dist) / limit;
-            p.x -= (dx / dist) * force * 1.2;
-            p.y -= (dy / dist) * force * 1.2;
+            p.x -= (dx / dist) * force * 1.1;
+            p.y -= (dy / dist) * force * 1.1;
           }
         }
 
@@ -85,20 +86,20 @@ export default function BackgroundParticles() {
         ctx.fill();
       });
 
-      // Optional: Draw subtle connections between close particles
+      // Connections between close particles using white strokes
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < 80) {
+          if (dist < 75) {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = "rgba(139, 92, 246, 0.05)";
-            ctx.lineWidth = 0.5;
-            ctx.globalAlpha = (80 - dist) / 80;
+            ctx.strokeStyle = "rgba(255, 255, 255, 0.03)";
+            ctx.lineWidth = 0.4;
+            ctx.globalAlpha = (75 - dist) / 75;
             ctx.stroke();
           }
         }
@@ -121,7 +122,6 @@ export default function BackgroundParticles() {
     window.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseleave", handleMouseLeave);
 
-    // Initial setup
     handleResize();
     draw();
 

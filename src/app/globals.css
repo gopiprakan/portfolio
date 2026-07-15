@@ -1,13 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-bg: #030307;
-  --color-brand-surface: #0a0a14;
+  --color-brand-bg: #000000;
+  --color-brand-surface: #0a0a0a;
+  --color-brand-border: rgba(255, 255, 255, 0.08);
+  --color-brand-text: #ffffff;
+  --color-brand-muted: #888888;
+  
+  /* Accent colors used purely for highlights and call-to-actions */
   --color-brand-purple: #8b5cf6;
   --color-brand-cyan: #06b6d4;
   --color-brand-pink: #ec4899;
-  --color-brand-text: #fafafa;
-  --color-brand-muted: #828292;
 
   --font-bebas: var(--font-bebas-neue);
   --font-syne: var(--font-syne);
@@ -15,8 +18,8 @@
 }
 
 :root {
-  --background: #030307;
-  --foreground: #fafafa;
+  --background: #000000;
+  --foreground: #ffffff;
 }
 
 * {
@@ -36,42 +39,22 @@ body {
   overflow-x: hidden;
 }
 
-/* Glassmorphism Styles */
+/* Monochrome Glassmorphism */
 .glass-panel {
-  background: rgba(10, 10, 20, 0.45);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(10, 10, 10, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .glass-panel-hover {
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s ease;
 }
 
 .glass-panel-hover:hover {
-  background: rgba(15, 15, 30, 0.6);
-  border-color: rgba(139, 92, 246, 0.25);
-  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.5), 0 0 15px 1px rgba(139, 92, 246, 0.1);
-}
-
-/* Radial Glow Backgrounds */
-.aurora-bg {
-  position: relative;
-  overflow: hidden;
-}
-
-.aurora-bg::before {
-  content: "";
-  position: absolute;
-  top: -20%;
-  left: -20%;
-  width: 140%;
-  height: 140%;
-  background: 
-    radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.04) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(6, 118, 212, 0.04) 0%, transparent 45%);
-  pointer-events: none;
-  z-index: 0;
+  background: rgba(20, 20, 20, 0.85);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.05);
 }
 
 /* Custom Hide Scrollbar for snap carousel */
@@ -83,7 +66,7 @@ body {
   display: none; /* Chrome, Safari and Opera */
 }
 
-/* Animated gradient text flow */
+/* Animated gradient text flow (for colored button highlights) */
 @keyframes gradient-flow {
   0% {
     background-position: 0% 50%;
@@ -101,9 +84,9 @@ body {
   animation: gradient-flow 6s linear infinite;
 }
 
-/* Cosmic grid background */
-.cosmic-grid {
+/* Grid background for the Black & White theme */
+.bw-grid {
   background-image: 
-    radial-gradient(rgba(139, 92, 246, 0.04) 1px, transparent 1px);
-  background-size: 24px 24px;
+    radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 28px 28px;
 }

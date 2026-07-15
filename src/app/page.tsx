@@ -36,35 +36,35 @@ const LinkedinIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   </svg>
 );
 
-// High-fidelity custom React component representing certification logos
+// High-fidelity custom React component representing certification logos in clean grayscale/white
 const CertificationIssuer = ({ logo }: { logo: string }) => {
   if (logo === "aws") {
     return (
-      <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/25 flex flex-col items-center justify-center text-amber-400 font-mono text-[9px] font-bold">
-        <Cpu className="w-4 h-4 mb-0.5 text-amber-500" />
+      <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex flex-col items-center justify-center text-white font-mono text-[9px] font-bold">
+        <Cpu className="w-4 h-4 mb-0.5 text-white/70" />
         AWS
       </div>
     );
   }
   if (logo === "gcp") {
     return (
-      <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/25 flex flex-col items-center justify-center text-blue-400 font-mono text-[9px] font-bold">
-        <Layers className="w-4 h-4 mb-0.5 text-blue-400" />
+      <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex flex-col items-center justify-center text-white font-mono text-[9px] font-bold">
+        <Layers className="w-4 h-4 mb-0.5 text-white/70" />
         GCP
       </div>
     );
   }
   if (logo === "tensorflow") {
     return (
-      <div className="w-12 h-12 rounded-xl bg-orange-500/10 border border-orange-500/25 flex flex-col items-center justify-center text-orange-400 font-mono text-[8px] font-bold">
-        <Sparkles className="w-4 h-4 mb-0.5 text-orange-400" />
+      <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex flex-col items-center justify-center text-white font-mono text-[8px] font-bold">
+        <Sparkles className="w-4 h-4 mb-0.5 text-white/70" />
         TENSOR
       </div>
     );
   }
   return (
-    <div className="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/25 flex flex-col items-center justify-center text-cyan-400 font-mono text-[9px] font-bold">
-      <Cpu className="w-4 h-4 mb-0.5 text-cyan-400" />
+    <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex flex-col items-center justify-center text-white font-mono text-[9px] font-bold">
+      <Cpu className="w-4 h-4 mb-0.5 text-white/70" />
       AZURE
     </div>
   );
@@ -76,7 +76,7 @@ const ImageScrollReveal = ({ src, alt }: { src: string; alt: string }) => {
   const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   return (
-    <div ref={ref} className="relative overflow-hidden w-full aspect-[16/10] bg-brand-surface rounded-xl border border-white/5">
+    <div ref={ref} className="relative overflow-hidden w-full aspect-[16/10] bg-brand-surface rounded-xl border border-white/10">
       <motion.div
         initial={{ clipPath: "inset(100% 0 0 0)" }}
         animate={isInView ? { clipPath: "inset(0% 0 0 0)" } : { clipPath: "inset(100% 0 0 0)" }}
@@ -88,7 +88,7 @@ const ImageScrollReveal = ({ src, alt }: { src: string; alt: string }) => {
           alt={alt}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
-          className="object-cover transition-transform duration-700 hover:scale-105"
+          className="object-cover grayscale hover:grayscale-0 transition-all duration-700 hover:scale-105"
         />
       </motion.div>
     </div>
@@ -97,18 +97,18 @@ const ImageScrollReveal = ({ src, alt }: { src: string; alt: string }) => {
 
 // Browser Frame mockup
 const BrowserFrame = ({ children, title }: { children: React.ReactNode; title: string }) => (
-  <div className="w-full bg-[#07070d]/90 border border-white/10 rounded-xl overflow-hidden shadow-2xl flex flex-col">
+  <div className="w-full bg-[#050505] border border-white/10 rounded-xl overflow-hidden shadow-2xl flex flex-col">
     {/* Bar */}
-    <div className="flex items-center justify-between px-4 py-2.5 border-b border-white/5 bg-[#040409] font-mono select-none">
+    <div className="flex items-center justify-between px-4 py-2.5 border-b border-white/5 bg-[#000000] font-mono select-none">
       <div className="flex items-center gap-1.5">
-        <span className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
-        <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
-        <span className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
+        <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
+        <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
+        <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
       </div>
       <span className="text-[10px] text-brand-muted tracking-widest uppercase font-semibold">{title}</span>
       <div className="w-10" />
     </div>
-    <div className="p-1 bg-[#0b0b14]/50">{children}</div>
+    <div className="p-1 bg-[#050505]">{children}</div>
   </div>
 );
 
@@ -118,27 +118,28 @@ export default function Page() {
   const projects = portfolioData.projects;
 
   return (
-    <main className="relative min-h-screen text-brand-text overflow-hidden bg-brand-bg cosmic-grid selection:bg-brand-purple selection:text-white">
-      {/* Canvas Particle System */}
+    <main className="relative min-h-screen text-brand-text overflow-hidden bg-brand-bg bw-grid selection:bg-white selection:text-black">
+      {/* Grayscale Particle Canvas */}
       <BackgroundParticles />
 
-      {/* Background Glows */}
-      <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-brand-purple/10 blur-[120px] pointer-events-none z-0" />
-      <div className="absolute bottom-[20%] right-[-10%] w-[60%] h-[60%] rounded-full bg-brand-cyan/10 blur-[150px] pointer-events-none z-0" />
+      {/* Subtle Monochrome Glow Backdrops */}
+      <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-white/[0.02] blur-[120px] pointer-events-none z-0" />
+      <div className="absolute bottom-[20%] right-[-10%] w-[60%] h-[60%] rounded-full bg-white/[0.02] blur-[150px] pointer-events-none z-0" />
 
-      {/* Navigation capsule */}
+      {/* Floating capsule navigation bar */}
       <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-4xl">
-        <nav className="glass-panel rounded-full px-6 py-3 flex items-center justify-between shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-          <a href="#" className="font-syne font-bold text-base sm:text-lg tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-brand-purple to-brand-cyan">
+        <nav className="glass-panel rounded-full px-6 py-3 flex items-center justify-between shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
+          <a href="#" className="font-syne font-bold text-base sm:text-lg tracking-wider text-white hover:opacity-80 transition-opacity">
             GOPIPRAKAN.
           </a>
           <div className="flex gap-6 sm:gap-8 items-center font-mono text-xs text-brand-muted">
-            <a href="#about" className="hover:text-brand-text transition-colors">ABOUT</a>
-            <a href="#projects" className="hover:text-brand-text transition-colors">PROJECTS</a>
-            <a href="#certifications" className="hover:text-brand-text transition-colors">CREDENTIALS</a>
-            <a href="#resume" className="hover:text-brand-text transition-colors">RESUME</a>
+            <a href="#about" className="hover:text-white transition-colors">ABOUT</a>
+            <a href="#projects" className="hover:text-white transition-colors">PROJECTS</a>
+            <a href="#certifications" className="hover:text-white transition-colors">CREDENTIALS</a>
+            <a href="#resume" className="hover:text-white transition-colors">RESUME</a>
           </div>
-          <a href="#contact" className="hidden sm:inline-block font-mono text-xs bg-brand-purple hover:bg-brand-purple/85 text-white px-4 py-1.5 rounded-full transition-all">
+          {/* Colored CTA navbar button */}
+          <a href="#contact" className="hidden sm:inline-block font-mono text-xs bg-gradient-to-r from-brand-purple to-brand-cyan hover:from-brand-purple/90 hover:to-brand-cyan/90 text-white font-semibold px-4 py-1.5 rounded-full shadow-[0_4px_12px_rgba(139,92,246,0.25)] hover:shadow-[0_4px_16px_rgba(139,92,246,0.4)] transition-all">
             CONNECT
           </a>
         </nav>
@@ -152,13 +153,13 @@ export default function Page() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
-            className="flex items-center gap-2 border border-brand-purple/20 bg-brand-purple/5 px-4 py-1.5 rounded-full text-xs font-mono text-brand-purple"
+            className="flex items-center gap-2 border border-white/10 bg-white/[0.03] px-4 py-1.5 rounded-full text-xs font-mono text-white/95"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-cyan animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
             SYS_STATUS: ACTIVE // FREELANCE AVAILABLE
           </motion.div>
 
-          {/* Core Name Title */}
+          {/* Stark name header */}
           <div className="space-y-4">
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
@@ -173,15 +174,12 @@ export default function Page() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="text-lg sm:text-2xl lg:text-3xl font-syne font-bold tracking-wide uppercase"
+              className="text-lg sm:text-2xl lg:text-3xl font-syne font-bold tracking-wide uppercase text-white/90"
             >
-              <span className="animate-gradient-text bg-gradient-to-r from-brand-purple via-brand-cyan to-brand-pink text-transparent bg-clip-text">
-                AI & Data Science Engineer
-              </span>
+              AI & Data Science Engineer
             </motion.h2>
           </div>
 
-          {/* Supporting Intro Text */}
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -191,40 +189,40 @@ export default function Page() {
             Architecting secure vector networks, real-time ML pipelines, and high-performance full-stack web platforms under the ZARO brand.
           </motion.p>
 
-          {/* Hero CTAs */}
+          {/* Colored CTA button console */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="flex flex-wrap gap-4 justify-center font-mono text-sm pt-4"
           >
-            <a href="#projects" className="group relative px-6 py-3 rounded-full bg-white text-black font-semibold overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] flex items-center gap-2">
+            <a href="#projects" className="group relative px-6 py-3 rounded-full bg-gradient-to-r from-brand-purple to-brand-cyan hover:from-brand-purple/95 hover:to-brand-cyan/95 text-white font-bold overflow-hidden transition-all duration-300 shadow-[0_4px_20px_rgba(6,182,212,0.25)] hover:shadow-[0_4px_25px_rgba(6,182,212,0.45)] flex items-center gap-2">
               Explore Projects
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
 
-            <a href="#contact" className="glass-panel px-6 py-3 rounded-full text-brand-text font-semibold hover:border-brand-purple/40 hover:bg-brand-surface/40 transition-all duration-300 flex items-center gap-2">
+            <a href="#contact" className="glass-panel px-6 py-3 rounded-full text-white font-semibold hover:border-white/30 hover:bg-white/[0.05] transition-all duration-300 flex items-center gap-2">
               Get in Touch
             </a>
           </motion.div>
         </div>
 
-        {/* Coordinates indicator at screen bottom */}
-        <div className="absolute bottom-8 left-0 right-0 px-6 sm:px-12 flex justify-between text-brand-muted font-mono text-[9px] tracking-widest uppercase select-none opacity-50">
+        {/* Bottom indicators */}
+        <div className="absolute bottom-8 left-0 right-0 px-6 sm:px-12 flex justify-between text-brand-muted font-mono text-[9px] tracking-widest uppercase select-none opacity-40">
           <div>LOC // 12.9716° N / 77.5946° E</div>
-          <div className="hidden sm:block">ZARO COGNITIVE SYSTEMS v3.0</div>
+          <div className="hidden sm:block">ZARO COGNITIVE SYSTEMS v3.0 // MONOCHROME PHASE</div>
           <div>EST // JULY 2026</div>
         </div>
       </section>
 
       {/* ABOUT SECTION */}
-      <section id="about" className="relative px-6 sm:px-12 lg:px-24 py-32 border-t border-white/5 bg-[#05050c]/40">
+      <section id="about" className="relative px-6 sm:px-12 lg:px-24 py-32 border-t border-white/10 bg-black">
         <div className="max-w-7xl mx-auto space-y-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left Column (Heading + Text) */}
+            {/* Operational details */}
             <div className="lg:col-span-7 space-y-6">
               <div className="space-y-2">
-                <span className="font-mono text-xs text-brand-purple uppercase tracking-widest">{"// THE ENGINE"}</span>
+                <span className="font-mono text-xs text-brand-muted uppercase tracking-widest">{"// THE ENGINE"}</span>
                 <h2 className="text-5xl sm:text-6xl font-bebas tracking-wide text-white">ABOUT // OPERATIONAL FOCUS</h2>
               </div>
               <div className="space-y-4 font-sans text-brand-muted text-sm sm:text-base leading-relaxed">
@@ -237,17 +235,17 @@ export default function Page() {
               </div>
             </div>
 
-            {/* Right Column (Portrait mockup card) */}
+            {/* Right side portrait wrapper */}
             <div className="lg:col-span-5 flex justify-center">
               <div className="w-full max-w-sm">
-                <GlassCard glowColor="multi" className="p-3">
-                  <div className="relative aspect-square w-full rounded-lg overflow-hidden bg-brand-bg border border-white/5">
+                <GlassCard className="p-3">
+                  <div className="relative aspect-square w-full rounded-lg overflow-hidden bg-brand-surface border border-white/10">
                     <Image 
                       src="/profile-photo.png" 
                       alt="Gopiprakan portrait" 
                       fill
                       sizes="(max-width: 768px) 100vw, 400px"
-                      className="object-cover grayscale contrast-115 brightness-95 hover:grayscale-0 transition-all duration-700"
+                      className="object-cover grayscale hover:grayscale-0 transition-all duration-700 brightness-90 hover:brightness-100"
                     />
                   </div>
                 </GlassCard>
@@ -259,7 +257,7 @@ export default function Page() {
           <div className="space-y-8">
             <div className="flex items-center gap-4">
               <h3 className="font-syne font-bold text-lg text-white uppercase tracking-wider">Core Capabilities</h3>
-              <div className="h-[1px] flex-grow bg-white/5" />
+              <div className="h-[1px] flex-grow bg-white/10" />
             </div>
             <InteractiveSkills skills={skills} />
           </div>
@@ -267,28 +265,28 @@ export default function Page() {
       </section>
 
       {/* PROJECTS SECTION */}
-      <section id="projects" className="px-6 sm:px-12 lg:px-24 py-32 border-t border-white/5 relative">
+      <section id="projects" className="px-6 sm:px-12 lg:px-24 py-32 border-t border-white/10 relative">
         <div className="max-w-7xl mx-auto space-y-16">
           <div className="flex justify-between items-end">
             <div className="space-y-2">
-              <span className="font-mono text-xs text-brand-cyan uppercase tracking-widest">{"// DEPLOYED CODE"}</span>
+              <span className="font-mono text-xs text-brand-muted uppercase tracking-widest">{"// DEPLOYED CODE"}</span>
               <h2 className="text-5xl sm:text-6xl font-bebas tracking-wide text-white">PROJECTS // SYSTEMS</h2>
             </div>
           </div>
 
           {/* Flagship Project slot */}
           {projects.filter(p => p.flagship).map((project) => (
-            <GlassCard key={project.id} glowColor="multi" className="p-6 sm:p-8 lg:p-10">
+            <GlassCard key={project.id} className="p-6 sm:p-8 lg:p-10">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
                 {/* Left content details */}
                 <div className="lg:col-span-6 flex flex-col justify-between space-y-8">
                   <div className="space-y-4">
                     <div className="flex items-center gap-2.5">
-                      <span className="bg-brand-purple/10 border border-brand-purple/20 text-brand-purple font-mono text-[9px] px-3 py-1 rounded-full uppercase tracking-wider font-semibold">
+                      <span className="bg-white/10 border border-white/20 text-white font-mono text-[9px] px-3 py-1 rounded-full uppercase tracking-wider font-semibold">
                         FLAGSHIP PRODUCT
                       </span>
-                      <span className="text-green-400 font-mono text-[10px] flex items-center gap-1.5 font-semibold">
-                        <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                      <span className="text-white font-mono text-[10px] flex items-center gap-1.5 font-semibold">
+                        <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
                         SYS_LIVE
                       </span>
                     </div>
@@ -296,7 +294,7 @@ export default function Page() {
                     <h3 className="text-3xl sm:text-4xl font-syne font-bold text-white tracking-tight">
                       {project.title}
                     </h3>
-                    <p className="text-xs text-brand-cyan font-mono uppercase tracking-widest">{project.role}</p>
+                    <p className="text-xs text-brand-muted font-mono uppercase tracking-widest">{project.role}</p>
 
                     <p className="text-brand-muted text-sm sm:text-base leading-relaxed font-sans pt-2">
                       {project.problem}
@@ -307,19 +305,19 @@ export default function Page() {
                     {/* Tags */}
                     <div className="flex flex-wrap gap-2 mb-6">
                       {project.tech.map((tag) => (
-                        <span key={tag} className="font-mono text-[10px] bg-white/[0.03] border border-white/5 text-brand-muted px-2.5 py-1 rounded-md">
+                        <span key={tag} className="font-mono text-[10px] bg-white/[0.04] border border-white/10 text-brand-muted px-2.5 py-1 rounded-md">
                           {tag}
                         </span>
                       ))}
                     </div>
 
-                    {/* CTAs */}
+                    {/* Colored interactive buttons */}
                     <div className="flex items-center gap-6 font-mono text-xs tracking-wider uppercase">
-                      <a href={project.liveUrl} className="group/btn flex items-center gap-1 text-brand-cyan font-semibold hover:underline">
+                      <a href={project.liveUrl} className="group/btn flex items-center gap-1 text-transparent bg-clip-text bg-gradient-to-r from-brand-purple to-brand-cyan font-bold hover:opacity-85 transition-opacity">
                         Launch Node
-                        <ArrowUpRight className="w-4 h-4 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                        <ArrowUpRight className="w-4 h-4 text-brand-cyan group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
                       </a>
-                      <a href={project.caseStudyUrl} className="text-brand-muted hover:text-brand-text transition-colors duration-200">
+                      <a href={project.caseStudyUrl} className="text-brand-muted hover:text-white transition-colors duration-200">
                         View Spec Sheets
                       </a>
                     </div>
@@ -339,7 +337,7 @@ export default function Page() {
           {/* Sub-grid of other projects */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {projects.filter(p => !p.flagship).map((project) => (
-              <GlassCard key={project.id} glowColor="purple" className="p-6 flex flex-col justify-between h-full space-y-6">
+              <GlassCard key={project.id} className="p-6 flex flex-col justify-between h-full space-y-6">
                 <div className="space-y-6">
                   <BrowserFrame title={`${project.id}_core`}>
                     <ImageScrollReveal 
@@ -352,7 +350,7 @@ export default function Page() {
                     <h3 className="text-2xl font-syne font-bold text-white tracking-tight">
                       {project.title}
                     </h3>
-                    <p className="text-[10px] text-brand-purple font-mono uppercase tracking-widest">{project.role}</p>
+                    <p className="text-[10px] text-brand-muted font-mono uppercase tracking-widest">{project.role}</p>
                     <p className="text-brand-muted text-sm leading-relaxed font-sans pt-1">
                       {project.problem}
                     </p>
@@ -362,7 +360,7 @@ export default function Page() {
                 <div className="space-y-6 pt-2">
                   <div className="flex flex-wrap gap-1.5">
                     {project.tech.map((tag) => (
-                      <span key={tag} className="font-mono text-[9px] bg-white/[0.03] border border-white/5 text-brand-muted px-2 py-0.5 rounded">
+                      <span key={tag} className="font-mono text-[9px] bg-white/[0.04] border border-white/10 text-brand-muted px-2 py-0.5 rounded">
                         {tag}
                       </span>
                     ))}
@@ -370,14 +368,14 @@ export default function Page() {
 
                   <div className="flex gap-4 font-mono text-[11px] tracking-wider uppercase">
                     {project.liveUrl !== "#" ? (
-                      <a href={project.liveUrl} className="group/btn flex items-center gap-0.5 text-brand-purple font-semibold hover:underline">
+                      <a href={project.liveUrl} className="group/btn flex items-center gap-0.5 text-transparent bg-clip-text bg-gradient-to-r from-brand-purple to-brand-cyan font-bold hover:opacity-85 transition-opacity">
                         Access Node
-                        <ArrowUpRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                        <ArrowUpRight className="w-3.5 h-3.5 text-brand-cyan group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
                       </a>
                     ) : (
                       <span className="text-brand-muted/40 cursor-not-allowed">Node Encrypted</span>
                     )}
-                    <a href={project.caseStudyUrl} className="text-brand-muted hover:text-brand-text transition-colors duration-200">
+                    <a href={project.caseStudyUrl} className="text-brand-muted hover:text-white transition-colors duration-200">
                       Technical Spec
                     </a>
                   </div>
@@ -389,11 +387,11 @@ export default function Page() {
       </section>
 
       {/* CERTIFICATIONS SECTION */}
-      <section id="certifications" className="px-6 sm:px-12 lg:px-24 py-32 border-t border-white/5 bg-[#05050c]/40 relative">
+      <section id="certifications" className="px-6 sm:px-12 lg:px-24 py-32 border-t border-white/10 bg-black relative">
         <div className="max-w-7xl mx-auto space-y-12">
           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-4">
             <div className="space-y-2">
-              <span className="font-mono text-xs text-brand-purple uppercase tracking-widest">{"// VERIFIED NODES"}</span>
+              <span className="font-mono text-xs text-brand-muted uppercase tracking-widest">{"// VERIFIED NODES"}</span>
               <h2 className="text-5xl sm:text-6xl font-bebas tracking-wide text-white">ENGINEERING CERTIFICATIONS</h2>
             </div>
             <div className="text-brand-muted text-[10px] font-mono tracking-widest select-none">
@@ -408,12 +406,12 @@ export default function Page() {
                 key={cert.id}
                 className="snap-center shrink-0 w-80 sm:w-[360px]"
               >
-                <GlassCard glowColor="cyan" className="p-6 flex flex-col justify-between h-[250px]">
+                <GlassCard className="p-6 flex flex-col justify-between h-[250px]">
                   <div className="flex justify-between items-start">
                     <CertificationIssuer logo={cert.logo} />
                     {cert.verified && (
-                      <span className="flex items-center gap-1 bg-green-500/10 border border-green-500/20 px-2 py-0.5 rounded-full text-[9px] text-green-400 font-mono font-semibold uppercase tracking-wider">
-                        <ShieldCheck className="w-3 h-3" />
+                      <span className="flex items-center gap-1 bg-white/5 border border-white/10 px-2.5 py-1 rounded-full text-[9px] text-white font-mono font-semibold uppercase tracking-wider">
+                        <ShieldCheck className="w-3 h-3 text-white" />
                         Verified
                       </span>
                     )}
@@ -433,10 +431,10 @@ export default function Page() {
                       href={cert.credentialUrl} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-xs text-brand-cyan font-mono font-semibold tracking-wider uppercase hover:underline"
+                      className="inline-flex items-center gap-1 text-xs text-white font-mono font-semibold tracking-wider uppercase hover:underline"
                     >
                       Credential Spec
-                      <ChevronRight className="w-3.5 h-3.5" />
+                      <ChevronRight className="w-3.5 h-3.5 text-white/85" />
                     </a>
                   </div>
                 </GlassCard>
@@ -447,13 +445,13 @@ export default function Page() {
       </section>
 
       {/* RESUME PROFILE SECTION */}
-      <section id="resume" className="px-6 sm:px-12 lg:px-24 py-32 border-t border-white/5 relative">
+      <section id="resume" className="px-6 sm:px-12 lg:px-24 py-32 border-t border-white/10 relative">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             {/* Left side details */}
             <div className="lg:col-span-5 space-y-6">
               <div className="space-y-2">
-                <span className="font-mono text-xs text-brand-cyan uppercase tracking-widest">{"// HISTORICAL RECORDS"}</span>
+                <span className="font-mono text-xs text-brand-muted uppercase tracking-widest">{"// HISTORICAL RECORDS"}</span>
                 <h2 className="text-5xl sm:text-6xl font-bebas tracking-wide text-white">RESUME // ARCHIVE</h2>
               </div>
               
@@ -463,27 +461,28 @@ export default function Page() {
                 </p>
                 
                 <div className="flex flex-col gap-2.5 font-mono text-xs pt-4">
-                  <div className="flex justify-between border-b border-white/5 pb-2">
+                  <div className="flex justify-between border-b border-white/10 pb-2">
                     <span className="text-brand-muted">INTEGRITY CHECK</span>
-                    <span className="text-green-400 font-bold">100% VERIFIED</span>
+                    <span className="text-white font-bold">100% VERIFIED</span>
                   </div>
-                  <div className="flex justify-between border-b border-white/5 pb-2">
+                  <div className="flex justify-between border-b border-white/10 pb-2">
                     <span className="text-brand-muted">LAST BACKUP</span>
                     <span>{portfolioData.resume.lastUpdated.toUpperCase()}</span>
                   </div>
-                  <div className="flex justify-between border-b border-white/5 pb-2">
+                  <div className="flex justify-between border-b border-white/10 pb-2">
                     <span className="text-brand-muted">ENCRYPTION HASH</span>
                     <span>MD5_SIGNATURE</span>
                   </div>
                 </div>
               </div>
 
+              {/* Colored gradient download button */}
               <div className="pt-6">
                 <a href={portfolioData.resume.pdfPath} download className="inline-block">
                   <motion.div
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="cursor-pointer bg-brand-purple hover:bg-brand-purple/85 text-white font-mono text-sm font-semibold px-6 py-3 rounded-full flex items-center gap-2 shadow-lg hover:shadow-brand-purple/20 transition-all duration-300"
+                    className="cursor-pointer bg-gradient-to-r from-brand-pink to-brand-purple hover:from-brand-pink/95 hover:to-brand-purple/95 text-white font-mono text-sm font-semibold px-6 py-3 rounded-full flex items-center gap-2 shadow-[0_4px_20px_rgba(236,72,153,0.25)] hover:shadow-[0_4px_25px_rgba(236,72,153,0.45)] transition-all duration-300"
                   >
                     <Download className="w-4 h-4 animate-bounce" />
                     Download File (PDF)
@@ -494,14 +493,14 @@ export default function Page() {
 
             {/* Right side preview */}
             <div className="lg:col-span-7">
-              <GlassCard glowColor="multi" className="p-3">
-                <div className="relative aspect-[1/1.4] w-full bg-brand-bg rounded-lg overflow-hidden border border-white/5">
+              <GlassCard className="p-3">
+                <div className="relative aspect-[1/1.4] w-full bg-brand-bg rounded-lg overflow-hidden border border-white/10">
                   <Image
                     src={portfolioData.resume.previewImagePath}
                     alt="Resume preview sheet"
                     fill
                     sizes="(max-width: 1024px) 100vw, 800px"
-                    className="object-cover grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition-all duration-700"
+                    className="object-cover grayscale hover:grayscale-0 opacity-85 hover:opacity-100 transition-all duration-700"
                   />
                 </div>
               </GlassCard>
@@ -511,15 +510,13 @@ export default function Page() {
       </section>
 
       {/* FOOTER & CONNECT */}
-      <footer id="contact" className="px-6 sm:px-12 lg:px-24 py-32 bg-[#05050c]/80 border-t border-white/5 relative z-10 text-center flex flex-col items-center justify-center">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(139,92,246,0.06),transparent_60%)] pointer-events-none" />
-
+      <footer id="contact" className="px-6 sm:px-12 lg:px-24 py-32 bg-black border-t border-white/10 relative z-10 text-center flex flex-col items-center justify-center">
         <div className="max-w-4xl space-y-8 relative z-10">
-          <span className="font-mono text-xs text-brand-purple uppercase tracking-widest">
+          <span className="font-mono text-xs text-brand-muted uppercase tracking-widest">
             {"// COMMUNICATION PORT OPEN //"}
           </span>
 
-          <h2 className="text-5xl sm:text-7xl lg:text-8xl font-bebas tracking-tighter text-white hover:text-brand-cyan transition-colors duration-500 uppercase select-none">
+          <h2 className="text-5xl sm:text-7xl lg:text-8xl font-bebas tracking-tighter text-white uppercase select-none">
             {"Let's build systems."}
           </h2>
 
@@ -527,38 +524,41 @@ export default function Page() {
             Interested in deploying high-performance data systems or shipping custom web environments? Initiate node connection.
           </p>
 
-          {/* Social connections */}
+          {/* Social connections in their natural brand colors */}
           <div className="flex justify-center items-center gap-6 pt-6">
+            {/* Mail: Google/Gmail Red */}
             <a 
               href="mailto:gopiprakan@example.com"
-              className="glass-panel p-4 rounded-full text-brand-text hover:text-white hover:border-brand-purple/50 hover:bg-brand-purple/10 transition-all duration-300 shadow-md"
+              className="p-4 rounded-full text-white bg-[#EA4335]/15 border border-[#EA4335]/30 hover:bg-[#EA4335] hover:border-[#EA4335] transition-all duration-300 shadow-md flex items-center justify-center"
               aria-label="Send Email Connection"
             >
               <Mail className="w-5 h-5" />
             </a>
             
+            {/* Github: Charcoal Slate */}
             <a 
               href="https://github.com" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="glass-panel p-4 rounded-full text-brand-text hover:text-white hover:border-brand-purple/50 hover:bg-brand-purple/10 transition-all duration-300 shadow-md"
+              className="p-4 rounded-full text-white bg-[#24292e]/40 border border-[#24292e]/60 hover:bg-[#24292e] hover:border-[#24292e] transition-all duration-300 shadow-md flex items-center justify-center"
               aria-label="Visit Github Spec"
             >
               <GithubIcon className="w-5 h-5" />
             </a>
 
+            {/* LinkedIn: LinkedIn Brand Blue */}
             <a 
               href="https://linkedin.com" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="glass-panel p-4 rounded-full text-brand-text hover:text-white hover:border-brand-purple/50 hover:bg-brand-purple/10 transition-all duration-300 shadow-md"
+              className="p-4 rounded-full text-white bg-[#0A66C2]/15 border border-[#0A66C2]/30 hover:bg-[#0A66C2] hover:border-[#0A66C2] transition-all duration-300 shadow-md flex items-center justify-center"
               aria-label="Visit Linkedin Node"
             >
               <LinkedinIcon className="w-5 h-5" />
             </a>
           </div>
 
-          <div className="text-[10px] text-brand-muted font-mono tracking-widest pt-16 select-none opacity-50 uppercase">
+          <div className="text-[10px] text-brand-muted font-mono tracking-widest pt-16 select-none opacity-40 uppercase">
             © 2026 GOPIPRAKAN. ALL SYSTEMS SIGNED. SHIPPED UNDER SECURE COGNITIVE NEURAL STANDARDS.
           </div>
         </div>
