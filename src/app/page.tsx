@@ -8,7 +8,6 @@ import {
   ArrowRight,
   Download, 
   Mail, 
-  ExternalLink,
   ShieldCheck,
   Cpu,
   Layers,
@@ -225,7 +224,7 @@ export default function Page() {
             {/* Left Column (Heading + Text) */}
             <div className="lg:col-span-7 space-y-6">
               <div className="space-y-2">
-                <span className="font-mono text-xs text-brand-purple uppercase tracking-widest">// THE ENGINE</span>
+                <span className="font-mono text-xs text-brand-purple uppercase tracking-widest">{"// THE ENGINE"}</span>
                 <h2 className="text-5xl sm:text-6xl font-bebas tracking-wide text-white">ABOUT // OPERATIONAL FOCUS</h2>
               </div>
               <div className="space-y-4 font-sans text-brand-muted text-sm sm:text-base leading-relaxed">
@@ -272,7 +271,7 @@ export default function Page() {
         <div className="max-w-7xl mx-auto space-y-16">
           <div className="flex justify-between items-end">
             <div className="space-y-2">
-              <span className="font-mono text-xs text-brand-cyan uppercase tracking-widest">// DEPLOYED CODE</span>
+              <span className="font-mono text-xs text-brand-cyan uppercase tracking-widest">{"// DEPLOYED CODE"}</span>
               <h2 className="text-5xl sm:text-6xl font-bebas tracking-wide text-white">PROJECTS // SYSTEMS</h2>
             </div>
           </div>
@@ -394,7 +393,7 @@ export default function Page() {
         <div className="max-w-7xl mx-auto space-y-12">
           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-4">
             <div className="space-y-2">
-              <span className="font-mono text-xs text-brand-purple uppercase tracking-widest">// VERIFIED NODES</span>
+              <span className="font-mono text-xs text-brand-purple uppercase tracking-widest">{"// VERIFIED NODES"}</span>
               <h2 className="text-5xl sm:text-6xl font-bebas tracking-wide text-white">ENGINEERING CERTIFICATIONS</h2>
             </div>
             <div className="text-brand-muted text-[10px] font-mono tracking-widest select-none">
@@ -454,7 +453,7 @@ export default function Page() {
             {/* Left side details */}
             <div className="lg:col-span-5 space-y-6">
               <div className="space-y-2">
-                <span className="font-mono text-xs text-brand-cyan uppercase tracking-widest">// HISTORICAL RECORDS</span>
+                <span className="font-mono text-xs text-brand-cyan uppercase tracking-widest">{"// HISTORICAL RECORDS"}</span>
                 <h2 className="text-5xl sm:text-6xl font-bebas tracking-wide text-white">RESUME // ARCHIVE</h2>
               </div>
               
@@ -517,11 +516,11 @@ export default function Page() {
 
         <div className="max-w-4xl space-y-8 relative z-10">
           <span className="font-mono text-xs text-brand-purple uppercase tracking-widest">
-            // COMMUNICATION PORT OPEN //
+            {"// COMMUNICATION PORT OPEN //"}
           </span>
 
           <h2 className="text-5xl sm:text-7xl lg:text-8xl font-bebas tracking-tighter text-white hover:text-brand-cyan transition-colors duration-500 uppercase select-none">
-            Let's build systems.
+            {"Let's build systems."}
           </h2>
 
           <p className="max-w-md mx-auto text-brand-muted text-xs sm:text-sm font-sans leading-relaxed">
