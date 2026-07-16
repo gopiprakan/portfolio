@@ -8,6 +8,7 @@ interface GlassCardProps {
   id?: string;
   glowColor?: "violet" | "cyan" | "pink" | "green" | "white";
   tiltEnabled?: boolean;
+  onClick?: () => void;
 }
 
 export default function GlassCard({
@@ -16,6 +17,7 @@ export default function GlassCard({
   id,
   glowColor = "violet",
   tiltEnabled = true,
+  onClick,
 }: GlassCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [transformStyle, setTransformStyle] = useState("");
@@ -95,6 +97,7 @@ export default function GlassCard({
     <div
       ref={cardRef}
       id={id}
+      onClick={onClick}
       style={{ 
         transform: transformStyle,
         transition: transformStyle ? "transform 0.1s ease-out" : "transform 0.5s ease"
